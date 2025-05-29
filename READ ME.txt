@@ -2,6 +2,12 @@ Kelompok 2
 Rekayasa Komputasi
 Kelas 3IA13
 Universitas Gunadarma
+Anggota Kelompok :
+Bayu Charlie
+Dhani Diaz
+Muhammad Rafli
+Ramadya Putra Bagastiko
+Yogawindy Fajar Musttaqin
 
 Tutorial run code :
 1. Pertama-tama jalankan code berikut pada terminal :
