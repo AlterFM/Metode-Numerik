@@ -1,7 +1,7 @@
 import streamlit as st
 import math
 import pandas as pd
-
+import sympy as sp
 # ====================
 # Import libraries
 
