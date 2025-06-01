@@ -1,6 +1,9 @@
 import streamlit as st
 import math
 import pandas as pd
+import sympy as sp
+# ====================
+# Import libraries
 
 # Fungsi untuk mengevaluasi f(x)
 def eval_function(expr, x):
@@ -54,8 +57,9 @@ def fixed_point_iteration_auto(g_expression, x0, epsilon=1e-6, Nmaks=30):
 
     return "Lelaran divergen atau belum konvergen.", None
 
+
 # Secant Method
-def secant_method(x0, x1, tol=1e-5, max_iter=100, fx=""):
+def secant_method(x0, x1, tol=1e-6, max_iter=100, fx=""):
     results = []
     for i in range(max_iter):
         f0, f1 = eval_function(fx, x0), eval_function(fx, x1)
@@ -70,7 +74,7 @@ def secant_method(x0, x1, tol=1e-5, max_iter=100, fx=""):
     return "Tidak konvergen dalam iterasi maksimum.", None
 
 # Newton-Raphson
-def newton_raphson(x0, epsilon=1e-5, max_iter=100, fx=""):
+def newton_raphson(x0, epsilon=1e-6, max_iter=100, fx=""):
     def f_prime(x):
         delta = 1e-6
         return (eval_function(fx, x + delta) - eval_function(fx, x)) / delta
@@ -131,7 +135,7 @@ method = st.selectbox("Pilih Metode", ["Bisection", "Fixed Point Iteration", "Se
 
 # Input fungsi sesuai metode
 if method == "Fixed Point Iteration":
-    gx = st.text_area("Masukkan ekspresi fungsi g(x)", "math.exp(x) - 5 * x**2")
+    gx = st.text_area("Masukkan ekspresi fungsi g(x)", "math.sqrt(math.exp(x)/5)")
 else:
     fx = st.text_area("Masukkan ekspresi fungsi f(x)", "math.exp(x) - 5 * x**2")
 
@@ -166,7 +170,7 @@ elif method == "Fixed Point Iteration":
 elif method == "Secant":
     x0 = st.number_input("Masukkan x₀", value=-1.0)
     x1 = st.number_input("Masukkan x₁", value=0.0)
-    tol = st.number_input("Masukkan toleransi", value=1e-5, format="%.6f")
+    tol = st.number_input("Masukkan toleransi", value=1e-6, format="%.6f")
     max_iter = st.number_input("Masukkan jumlah iterasi maksimum", value=100, min_value=1)
     if st.button("Run Secant Method"):
         results, root = secant_method(x0, x1, tol, max_iter, fx)
