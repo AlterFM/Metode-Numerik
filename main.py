@@ -1,7 +1,7 @@
 import streamlit as st
 import math
 import pandas as pd
-import sympy as sp
+
 # ====================
 # Import libraries
 
@@ -155,7 +155,7 @@ if method == "Bisection":
             st.success(f"Akar ditemukan: x = {root}")
 
 elif method == "Fixed Point Iteration":
-    x0 = st.number_input("Masukkan tebakan awal x₀", value=0.0)
+    x0 = st.number_input("Masukkan tebakan awal x₀", value=0.5)
     epsilon = st.number_input("Masukkan toleransi galat", value=1e-6, format="%.6f")
     Nmaks = st.number_input("Masukkan jumlah iterasi maksimum", value=30, min_value=1)
     if st.button("Run Fixed Point Iteration"):
@@ -168,8 +168,8 @@ elif method == "Fixed Point Iteration":
             st.success(f"Akar ditemukan: x ≈ {root:.6f}")
 
 elif method == "Secant":
-    x0 = st.number_input("Masukkan x₀", value=-1.0)
-    x1 = st.number_input("Masukkan x₁", value=0.0)
+    x0 = st.number_input("Masukkan x₀", value=0.5)
+    x1 = st.number_input("Masukkan x₁", value=1.0)
     tol = st.number_input("Masukkan toleransi", value=1e-6, format="%.6f")
     max_iter = st.number_input("Masukkan jumlah iterasi maksimum", value=100, min_value=1)
     if st.button("Run Secant Method"):
